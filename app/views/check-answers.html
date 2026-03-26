@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check your answers before booking your appointment" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    <h1 class="govuk-heading-xl">Check your answers before booking your appointment</h1>
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: { text: "When do you need to travel?" },
+        value: { text: data["travel-date"] if data["travel-date"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/travel-date",
+            text: "Change",
+            visuallyHiddenText: "when do you need to travel?"
+          }]
+        }
+      },
+      {
+        key: { text: "Do you have your current passport with you?" },
+        value: { text: data["current-passport"] if data["current-passport"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/current-passport",
+            text: "Change",
+            visuallyHiddenText: "do you have your current passport with you?"
+          }]
+        }
+      },
+      {
+        key: { text: "Is your current passport damaged?" },
+        value: { text: data["passport-condition"] if data["passport-condition"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/passport-condition",
+            text: "Change",
+            visuallyHiddenText: "is your current passport damaged?"
+          }]
+        }
+      },
+      {
+        key: { text: "Where in the UK are you?" },
+        value: { text: data["your-location"] if data["your-location"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/your-location",
+            text: "Change",
+            visuallyHiddenText: "where in the uk are you?"
+          }]
+        }
+      },
+      {
+        key: { text: "What is your phone number?" },
+        value: { text: data["contact-details"] if data["contact-details"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/contact-details",
+            text: "Change",
+            visuallyHiddenText: "what is your phone number?"
+          }]
+        }
+      }
+      ]
+    }) }}
+
+    <form method="post" novalidate>
+      {{ govukButton({ text: "Confirm and send" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
