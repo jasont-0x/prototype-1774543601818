@@ -1,0 +1,25 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Book an urgent passport renewal appointment" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Book an urgent passport renewal appointment</h1>
+    <p class="govuk-body">Book an in-person appointment to renew your passport urgently if you're travelling soon.</p>
+    <p class="govuk-body">You will need:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Your current passport</li>
+      <li>A digital passport photo</li>
+      <li>A debit or credit card to pay</li>
+      <li>Details of your travel plans</li>
+    </ul>
+    <p class="govuk-body">It takes around <strong>5 minutes</strong> to complete.</p>
+    {{ govukButton({
+      text: "Start now",
+      href: "/travel-date",
+      isStartButton: true
+    }) }}
+  </div>
+</div>
+{% endblock %}
