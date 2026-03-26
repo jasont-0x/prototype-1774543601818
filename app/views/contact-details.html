@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "What is your phone number?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    {% if errors and errors["contact-details"] %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [{ text: errors["contact-details"], href: "#contact-details" }]
+    }) }}
+    {% endif %}
+
+    <form method="post" novalidate>
+    {{ govukInput({
+      id: "contact-details",
+      name: "contact-details",
+      label: {
+        text: "What is your phone number?",
+        isPageHeading: true,
+        classes: "govuk-label--l"
+      },
+      hint: { text: "We'll text you your appointment details and any updates." },
+      errorMessage: errors["contact-details"] if errors else null,
+      value: data["contact-details"]
+    }) }}
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
