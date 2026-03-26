@@ -1,0 +1,10 @@
+{
+  "serviceName": "Book an urgent passport renewal appointment",
+  "serviceUrl": "/start",
+  "useAuth": false,
+  "plugins": {
+    "govuk-frontend": {
+      "rebrand": true
+    }
+  }
+}
